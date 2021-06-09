@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAMO Embed Code Generator</title>
+    <link rel="stylesheet" href="generator.css" />
+  </head>
+  <body>
+    <script>
+      function tipclassic() {
+        //classic iframe
+        if (document.getElementById('address').value == '') {
+          window.alert('Please enter your wallet address');
+        } else if (document.getElementById('name').value == '') {
+          window.alert('Please enter your name');
+        } else {
+          url =
+            'https://samotips.samoyedcoin.com/tip?address=' +
+            document.getElementById('address').value +
+            '&name=' +
+            document.getElementById('name').value;
+          code1 =
+            '<iframe id="tipwindow" title="Tip ' +
+            document.getElementById('name').value +
+            '" width="320" height="500" src="' +
+            url +
+            '"></iframe>';
+          code2 =
+            '<button class="button" onclick="openTippingWindow()">Tip me !</button>';
+          document.getElementById('iframecode').value = code1;
+          document.getElementById('buttoncode').value =
+            code2 +
+            '<script\>function openTippingWindow(){ window.open("' +
+            url +
+            '","Tip me","width=320, height=500");}\</script\>';
+          document.getElementById('exampleiframe').innerHTML = code1; // test purposes, to remove
+          document.getElementById('examplebutton').innerHTML = code2; // test purposes, to remove
+        }
+      }
+
+      function tipwide() {
+        // wide iframe
+        if (document.getElementById('address').value == '') {
+          window.alert('Please enter your wallet address');
+        } else if (document.getElementById('name').value == '') {
+          window.alert('Please enter your name');
+        } else {
+          url =
+            'https://samotips.samoyedcoin.com/tipwide?address=' +
+            document.getElementById('address').value +
+            '&name=' +
+            document.getElementById('name').value;
+          code1 =
+            '<iframe id="tipwindow" title="Tip ' +
+            document.getElementById('name').value +
+            '" width="620" height="250" src="' +
+            url +
+            '"></iframe>';
+          code2 =
+            '<button class="button" onclick="openTippingWideWindow()">Tip me !</button>';
+          document.getElementById('iframecode').value = code1;
+          document.getElementById('buttoncode').value =
+            code2 +
+            '\<script\>function openTippingWideWindow(){ window.open("' +
+            url +
+            '","Tip me","width=620, height=250");}</script\>';
+          document.getElementById('exampleiframe').innerHTML = code1; // test purposes, to remove
+          document.getElementById('examplebutton').innerHTML = code2; // test purposes, to remove
+        }
+      }
+
+      function openTippingWindow() {
+        window.open(url, 'nom_popup', 'width=320, height=500');
+      }
+
+      function openTippingWideWindow() {
+        window.open(url, 'nom_popup', 'width=620, height=250');
+      }
+    </script>
+    <input
+      class="input"
+      type="text"
+      id="address"
+      placeholder="Your wallet address"
+    />
+    <input class="input" type="text" id="name" placeholder="Your name" />
+    <p>
+      <button class="button" onclick="tipclassic()" style="margin: auto">
+        Generate your tipping window (classic)
+      </button>
+    </p>
+    <p>
+      <button class="button" onclick="tipwide()" style="margin: auto">
+        Generate your tipping window (wide)
+      </button>
+    </p>
+    <p>
+      <textarea readonly id="iframecode" rows="4" cols="80">
+Your iframe code will appear here</textarea
+      >
+      <textarea readonly id="buttoncode" rows="4" cols="80">
+Your button code will appear here</textarea
+      >
+    </p>
+
+    <div id="exampleiframe" style="color: white">Iframe example here</div>
+    <p></p>
+    <div id="examplebutton" style="color: white">Button example here</div>
+  </body>
+</html>
