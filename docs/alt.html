@@ -43,31 +43,29 @@
         </div>
 
         <div class="row justify-content-md-center" style="padding-top: 30px;">
-            <div class="col-xl-6 col-lg-8 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" style="padding-bottom: 10px;">
                 <button class="button" onclick="tipclassic()" style="width:100%">
-                    Generate embed and button codes
+                    Generate your tipping window (classic)
+                </button>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" style="padding-bottom: 10px;">
+                <button class="button" onclick="tipwide()" style="width:100%">
+                    Generate your tipping window (wide)
                 </button>
             </div>
         </div>
 
         <div class="row justify-content-md-center" style="padding-top: 30px;">
+
             <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12" style="">
-                <h4 style="color:white">Iframe Code:</h4>
+                <h4 style="color:white">Iframe code:</h4>
                 <textarea readonly id="iframecode" rows="4" cols="20" style="width:100%">Your iframe code will appear here...
                 </textarea>
             </div>
         </div>
-
-        <div class="row justify-content-md-center" style="padding-top: 30px;">
-          <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12" style="">
-            <h4 style="color:white">Iframe Wide Format Code:</h4>
-            <textarea readonly id="iframecode_wide" rows="4" cols="20" style="width:100%">Your wide format iframe code will appear here...
-            </textarea>
-          </div>
-        </div>
         <div class="row justify-content-md-center" style="padding-top: 30px;">
             <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12">
-                <h4 style="color:white">Button Code:</h4>
+                <h4 style="color:white">Button code:</h4>
                 <textarea readonly id="buttoncode" rows="4"  cols="20" style="width:100%">Your button code will appear here...
                 </textarea>
             </div>
@@ -79,17 +77,10 @@
             </div>
         </div>
         <div class="row justify-content-md-center" style="padding-top: 30px;">
-          <div class="col-md-12 col-sm-12 text-center" style="">
-              <h4 style="color:white;" id="exampleiframe_title" hidden>iFrame Example:</h4>
-              <!-- <div style="display: inline-block; color: white; margin-right: 250px; margin-top: 8px" id="exampleiframe"></div>-->
-              <div id="exampleiframe"></div>
-          </div>
-      </div>
-        <div class="row justify-content-md-center" style="padding-top: 30px;">
             <div class="col-md-12 col-sm-12 text-center" style="">
-                <h4 style="color:white;" id="exampleiframewide_title" hidden>iFrame Wide Format Example:</h4>
+                <h4 style="color:white;" id="exampleiframe_title" hidden>iFrame Example:</h4>
                 <!-- <div style="display: inline-block; color: white; margin-right: 250px; margin-top: 8px" id="exampleiframe"></div>-->
-                <div id="exampleiwideframe"></div>
+                <div id="exampleiframe"></div>
             </div>
         </div>
 
@@ -128,27 +119,54 @@
         // window.alert('Please enter your name');
         toastr["warning"]("Please enter your name", "Warning");
       } else {
-        let name = document.getElementById('name').value;
-        let address = document.getElementById('address').value;
-        url = `https://samotips.samoyedcoin.com/tip?address=${address}&name=${name}`;
-        urlWide = `https://samotips.samoyedcoin.com/tipwide?address=${address}&name=${name}`;
+        url =  'https://samotips.samoyedcoin.com/tip?address=' + document.getElementById('address').value +
+                    '&name=' + document.getElementById('name').value;
+        code1 = '<iframe id="tipwindow" title="Tip ' + document.getElementById('name').value +  '" width="320" height="500" src="' +
+                        url + '"></iframe>';
+        code2 = '<button class="button" onclick="openTippingWindow()">Tip me!</button>';
 
-        let iframeCode = `<iframe id="tipwindow" title="Tip ${name}" width="320" height="500" src="${url}"></iframe>`;
-        let iframeCodeWide = `<iframe id="tipwindow" title="Tip ${name}" width="620" height="250" src="${urlWide}"></iframe>`;
-        let buttonCode = `<button class="button" onclick="openTippingWindow()">Tip me!</button>` +
-          ` <script>function openTippingWindow(){ window.open("${url}", "Tip ${name}", "width=320, height=500");}</scr` + `ipt>`;
+        document.getElementById('iframecode').value = code1;
+        document.getElementById('buttoncode').value = code2 + '\<script\>function openTippingWindow(){ window.open("' +
+          url + '","Tip me","width=320, height=500");}\</script\>';
 
-        document.getElementById('iframecode').value = iframeCode;
-        document.getElementById('iframecode_wide').value = iframeCodeWide;
-        document.getElementById('buttoncode').value = buttonCode;
-
-        document.getElementById('exampleiframe').innerHTML = iframeCode; // test purposes, to remove
-        document.getElementById('exampleiwideframe').innerHTML = iframeCodeWide;
-        document.getElementById('examplebutton').innerHTML = buttonCode; // test purposes, to remove
+        document.getElementById('exampleiframe').innerHTML = code1; // test purposes, to remove
+        document.getElementById('examplebutton').innerHTML = code2; // test purposes, to remove
 
         document.getElementById("examplebutton_title").removeAttribute("hidden");
         document.getElementById("exampleiframe_title").removeAttribute("hidden");
-        document.getElementById("exampleiframewide_title").removeAttribute("hidden");
+      }
+    }
+
+    function tipwide() {
+      // wide iframe
+      if (document.getElementById('address').value == '') {
+<!--        window.alert('Please enter your wallet address');-->
+        toastr["warning"]("Please enter your wallet address", "Warning");
+      } else if (document.getElementById('name').value == '') {
+<!--        window.alert('Please enter your name');-->
+        toastr["warning"]("lease enter your name", "Warning");
+      } else {
+        url =
+          'https://samotips.samoyedcoin.com/tipwide?address=' +
+          document.getElementById('address').value +
+          '&name=' +
+          document.getElementById('name').value;
+        code1 =
+          '<iframe id="tipwindow" title="Tip ' +
+          document.getElementById('name').value +
+          '" width="620" height="250" src="' +
+          url +
+          '"></iframe>';
+        code2 =
+          '<button class="button" onclick="openTippingWideWindow()">Tip me!</button>';
+        document.getElementById('iframecode').value = code1;
+        document.getElementById('buttoncode').value =
+          code2 +
+          '\<script\>function openTippingWideWindow(){ window.open("' +
+          url +
+          '","Tip me","width=620, height=250");}\</script\>';
+        document.getElementById('exampleiframe').innerHTML = code1; // test purposes, to remove
+        document.getElementById('examplebutton').innerHTML = code2; // test purposes, to remove
       }
     }
 
