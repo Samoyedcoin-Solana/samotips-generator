@@ -23,6 +23,7 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin-top: 2vh;
 }
 
 header h1 {
@@ -150,4 +151,10 @@ body {
 
 .inline-block-child {
   display: inline-block;
+}
+
+@media screen and (max-width: 600px) {
+    header {
+        margin-top: 5vh;
+    }
 }
