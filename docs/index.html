@@ -2,164 +2,268 @@
 <html>
   <head>
     <title>SAMO Embed Code Generator</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" integrity="sha512-6S2HWzVFxruDlZxI3sXOZZ4/eJ8AcxkQH1+JjSe/ONCEqR9L4Ysq5JdT5ipqtzU7WHalNwzwBv+iE51gNHJNqQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css"
+      integrity="sha512-6S2HWzVFxruDlZxI3sXOZZ4/eJ8AcxkQH1+JjSe/ONCEqR9L4Ysq5JdT5ipqtzU7WHalNwzwBv+iE51gNHJNqQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <link rel="stylesheet" href="generator.css" />
-
   </head>
   <body>
     <div class="container">
       <header>
         <div class="header-img">
-          <img src="./Waiting.png"/>
+          <img src="./Waiting.png" />
         </div>
         <div class="header-title">
           <div class="title-main">
             <h1>SamoTIPS</h1>
           </div>
-          <div class="title-sub">
-            Code Generator Page
-          </div>
+          <div class="title-sub">Code Generator Page</div>
         </div>
       </header>
 
-        <div class="row justify-content-md-center" style="padding-top:25px">
-            <div class="col-xl-6 col-lg-8 col-md-12 col-sm-12">
-                <form>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <input type="text" class="form-control input" class="form-control" id="address" placeholder="Your wallet address">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group" style="padding-top: 10px">
-                            <input class="form-control input" type="text" id="name" placeholder="Your name" />
-                        </div>
-                    </div>
-                </form>
+      <div class="row justify-content-md-center" style="padding-top: 25px">
+        <div class="col-xl-6 col-lg-8 col-md-12 col-sm-12">
+          <form>
+            <div class="form-row">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control input"
+                  class="form-control"
+                  id="address"
+                  placeholder="Your wallet address"
+                />
+              </div>
             </div>
-        </div>
-
-        <div class="row justify-content-md-center" style="padding-top: 30px;">
-            <div class="col-xl-6 col-lg-8 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                <button class="button" onclick="tipclassic()" style="width:100%">
-                    Generate embed codes
-                </button>
+            <div class="form-row">
+              <div class="form-group" style="padding-top: 10px">
+                <input
+                  class="form-control input"
+                  type="text"
+                  id="name"
+                  placeholder="Your name"
+                />
+              </div>
             </div>
+          </form>
         </div>
-		
-		<div class="row justify-content-md-center" style="padding-top: 30px;">
-            <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12">
-                <h4 style="color:white">Button Code:</h4>
-                <textarea readonly id="buttoncode" rows="4"  cols="20" style="width:100%">Your button code will appear here...
-                </textarea>
-            </div>
-        </div>
-
-        <div class="row justify-content-md-center" style="padding-top: 30px;">
-            <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12" style="">
-                <h4 style="color:white">Iframe Code:</h4>
-                <textarea readonly id="iframecode" rows="4" cols="20" style="width:100%">Your iframe code will appear here...
-                </textarea>
-            </div>
-        </div>
-
-        <div class="row justify-content-md-center" style="padding-top: 30px;">
-          <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12" style="">
-            <h4 style="color:white">Iframe Wide Format Code:</h4>
-            <textarea readonly id="iframecode_wide" rows="4" cols="20" style="width:100%">Your wide format iframe code will appear here...
-            </textarea>
-          </div>
-        </div>
-        <div class="row justify-content-md-center" style="padding-top: 30px;">
-            <div class="col-md-6 col-sm-12 text-center" style="">
-                <h4 style="color:white;" id="examplebutton_title" hidden>Button Example:</h4>
-                <div style="display: inline-block; color: white; vertical-align: top; margin-top: 8px" id="examplebutton"></div>
-            </div>
-        </div>
-        <div class="row justify-content-md-center" style="padding-top: 30px;">
-          <div class="col-md-12 col-sm-12 text-center" style="">
-              <h4 style="color:white;" id="exampleiframe_title" hidden>iFrame Example:</h4>
-              <!-- <div style="display: inline-block; color: white; margin-right: 250px; margin-top: 8px" id="exampleiframe"></div>-->
-              <div id="exampleiframe"></div>
-          </div>
       </div>
-        <div class="row justify-content-md-center" style="padding-top: 30px;">
-            <div class="col-md-12 col-sm-12 text-center" style="">
-                <h4 style="color:white;" id="exampleiframewide_title" hidden>iFrame Wide Format Example:</h4>
-                <!-- <div style="display: inline-block; color: white; margin-right: 250px; margin-top: 8px" id="exampleiframe"></div>-->
-                <div id="exampleiwideframe"></div>
-            </div>
-        </div>
 
+      <div class="row justify-content-md-center" style="padding-top: 30px">
+        <div
+          class="col-xl-6 col-lg-8 col-md-12 col-sm-12"
+          style="padding-bottom: 10px"
+        >
+          <button class="button" onclick="tipclassic()" style="width: 100%">
+            Generate embed and button codes
+          </button>
+        </div>
+      </div>
+
+      <div class="row justify-content-md-center" style="padding-top: 30px">
+        <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12">
+          <h4 style="color: white">
+            Button Code:
+            <button class="copy-btn" onclick="copyText('buttoncode')">
+              <i class="fa fa-copy"></i>
+            </button>
+          </h4>
+          <textarea
+            readonly
+            id="buttoncode"
+            rows="4"
+            cols="20"
+            style="width: 100%"
+          >
+Your button code will appear here...
+                </textarea
+          >
+        </div>
+      </div>
+
+      <div class="row justify-content-md-center" style="padding-top: 30px">
+        <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12" >
+          <h4 style="color: white">
+            Iframe Code:
+            <button class="copy-btn" onclick="copyText('iframecode')">
+              <i class="fa fa-copy"></i>
+            </button>
+          </h4>
+
+          <textarea
+            readonly
+            id="iframecode"
+            rows="4"
+            cols="20"
+            style="width: 100%"
+          >
+Your iframe code will appear here...
+                </textarea
+          >
+        </div>
+      </div>
+
+      <div class="row justify-content-md-center" style="padding-top: 30px">
+        <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12">
+          <h4 style="color: white">
+            Iframe Wide Format Code:
+            <button class="copy-btn" onclick="copyText('iframecode_wide')">
+              <i class="fa fa-copy"></i>
+            </button>
+          </h4>
+          <textarea
+            readonly
+            id="iframecode_wide"
+            rows="4"
+            cols="20"
+            style="width: 100%"
+          >
+Your wide format iframe code will appear here...
+            </textarea
+          >
+        </div>
+      </div>
+      <div class="row justify-content-md-center" style="padding-top: 30px">
+        <div class="col-md-6 col-sm-12 text-center">
+          <h4 style="color: white" id="examplebutton_title" hidden>
+            Button Example:
+          </h4>
+          <div
+            style="
+              display: inline-block;
+              color: white;
+              vertical-align: top;
+              margin-top: 8px;
+            "
+            id="examplebutton"
+          ></div>
+        </div>
+      </div>
+      <div class="row justify-content-md-center" style="padding-top: 30px">
+        <div class="col-md-12 col-sm-12 text-center">
+          <h4 style="color: white" id="exampleiframe_title" hidden>
+            iFrame Example:
+          </h4>
+          <div id="exampleiframe"></div>
+        </div>
+      </div>
+      <div class="row justify-content-md-center" style="padding-top: 30px; margin-bottom: 30px">
+        <div class="col-md-12 col-sm-12 text-center">
+          <h4 style="color: white" id="exampleiframewide_title" hidden>
+            iFrame Wide Format Example:
+          </h4>
+          <div id="exampleiwideframe"></div>
+        </div>
+      </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"
+      integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script>
-        toastr.options = {
-            "closeButton": true,
-            "debug": false,
-            "newestOnTop": true,
-            "progressBar": true,
-            "positionClass": "toast-top-center",
-            "preventDuplicates": false,
-            "onclick": null,
-            "showDuration": "300",
-            "hideDuration": "1000",
-            "timeOut": "5000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-        }
+      toastr.options = {
+        closeButton: true,
+        debug: false,
+        newestOnTop: true,
+        progressBar: true,
+        positionClass: 'toast-top-center',
+        preventDuplicates: false,
+        onclick: null,
+        showDuration: '300',
+        hideDuration: '1000',
+        timeOut: '5000',
+        extendedTimeOut: '1000',
+        showEasing: 'swing',
+        hideEasing: 'linear',
+        showMethod: 'fadeIn',
+        hideMethod: 'fadeOut',
+      };
     </script>
     <script>
-    function tipclassic() {
-      // toastr.info('Are you the 6 fingered man?')
+      function tipclassic() {
+        // toastr.info('Are you the 6 fingered man?')
         //classic iframe
-      if (document.getElementById('address').value == '') {
-        // window.alert('Please enter your wallet address');
+        if (document.getElementById('address').value == '') {
+          // window.alert('Please enter your wallet address');
 
-        toastr["warning"]("Please enter your wallet address", "Warning");
-      } else if (document.getElementById('name').value == '') {
-        // window.alert('Please enter your name');
-        toastr["warning"]("Please enter your name", "Warning");
-      } else {
-        let name = document.getElementById('name').value;
-        let address = document.getElementById('address').value;
-        url = `https://samotips.samoyedcoin.com/tip?address=${address}&name=${name}`;
-        urlWide = `https://samotips.samoyedcoin.com/tipwide?address=${address}&name=${name}`;
+          toastr['warning']('Please enter your wallet address', 'Warning');
+        } else if (document.getElementById('name').value == '') {
+          // window.alert('Please enter your name');
+          toastr['warning']('Please enter your name', 'Warning');
+        } else {
+          let name = document.getElementById('name').value;
+          let address = document.getElementById('address').value;
+          url = `https://samotips.samoyedcoin.com/tip?address=${address}&name=${name}`;
+          urlWide = `https://samotips.samoyedcoin.com/tipwide?address=${address}&name=${name}`;
 
-        let iframeCode = `<iframe id="tipwindow" title="Tip ${name}" width="320" height="500" src="${url}"></iframe>`;
-        let iframeCodeWide = `<iframe id="tipwindow" title="Tip ${name}" width="620" height="250" src="${urlWide}"></iframe>`;
-        let buttonCode = `<button class="button" onclick="openTippingWindow()">Tip me!</button>` +
-          ` <script>function openTippingWindow(){ window.open("${url}", "Tip ${name}", "width=320, height=500");}</scr` + `ipt>`;
+          let iframeCode = `<iframe id="tipwindow" title="Tip ${name}" width="320" height="500" src="${url}"></iframe>`;
+          let iframeCodeWide = `<iframe id="tipwindow" title="Tip ${name}" width="620" height="250" src="${urlWide}"></iframe>`;
+          let buttonCode =
+            `<button class="button" onclick="openTippingWindow()">Tip me!</button>` +
+            ` <script>function openTippingWindow(){ window.open("${url}", "Tip ${name}", "width=320, height=500");}</scr` +
+            `ipt>`;
 
-        document.getElementById('iframecode').value = iframeCode;
-        document.getElementById('iframecode_wide').value = iframeCodeWide;
-        document.getElementById('buttoncode').value = buttonCode;
+          document.getElementById('iframecode').value = iframeCode;
+          document.getElementById('iframecode_wide').value = iframeCodeWide;
+          document.getElementById('buttoncode').value = buttonCode;
 
-        document.getElementById('exampleiframe').innerHTML = iframeCode; // test purposes, to remove
-        document.getElementById('exampleiwideframe').innerHTML = iframeCodeWide;
-        document.getElementById('examplebutton').innerHTML = buttonCode; // test purposes, to remove
+          document.getElementById('exampleiframe').innerHTML = iframeCode; // test purposes, to remove
+          document.getElementById('exampleiwideframe').innerHTML =
+            iframeCodeWide;
+          document.getElementById('examplebutton').innerHTML = buttonCode; // test purposes, to remove
 
-        document.getElementById("examplebutton_title").removeAttribute("hidden");
-        document.getElementById("exampleiframe_title").removeAttribute("hidden");
-        document.getElementById("exampleiframewide_title").removeAttribute("hidden");
+          document
+            .getElementById('examplebutton_title')
+            .removeAttribute('hidden');
+          document
+            .getElementById('exampleiframe_title')
+            .removeAttribute('hidden');
+          document
+            .getElementById('exampleiframewide_title')
+            .removeAttribute('hidden');
+        }
       }
-    }
 
-    function openTippingWindow() {
-      window.open(url, 'nom_popup', 'width=320, height=500');
-    }
+      function openTippingWindow() {
+        window.open(url, 'nom_popup', 'width=320, height=500');
+      }
 
-    function openTippingWideWindow() {
-      window.open(url, 'nom_popup', 'width=620, height=250');
-    }
-  </script>
+      function openTippingWideWindow() {
+        window.open(url, 'nom_popup', 'width=620, height=250');
+      }
+
+      function copyText(id) {
+        let textarea = document.getElementById(id);
+        textarea.select();
+        document.execCommand('copy');
+      }
+    </script>
   </body>
 </html>
