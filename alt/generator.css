@@ -1,0 +1,175 @@
+:root {
+    --dark-blue: #131a36;
+    --blue: #202951;
+    --pink: #df7fe0;
+    --purple: #752e75;
+}
+
+a {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
+html {
+    height: 100%;
+}
+
+header {
+    color: white;
+    padding: 0.5rem;
+    max-height: 22vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 2vh;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1rem;
+}
+
+.header-img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header .header-img img {
+    max-height: 80%;
+    margin-left: -4vw;
+    width: 20vw;
+    object-fit: contain;
+    transform: scaleX(-1);
+}
+
+
+.header-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2rem;
+}
+
+.title-sub {
+    margin-top: 20px;
+    letter-spacing: 0.18rem;
+    line-height: 0.1rem;
+}
+
+body {
+    /* background-color: var(--blue) !important; */
+    font-family: 'Montserrat', sans-serif;
+    /* padding-left: 20px; */
+    /* padding-right: 20px; */
+    background: linear-gradient(
+            215deg,
+            var(--purple),
+            var(--blue)
+    ) no-repeat center center fixed !important;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    height: 100%;
+}
+
+#toast-container > div {
+    opacity:1;
+}
+
+.input {
+    color: #ddd;
+    font-weight: 500;
+    box-shadow: none;
+    background: 0 0;
+    background-color: var(--blue);
+    border: 2px solid var(--purple);
+    text-align: center;
+    font-size: 1.4rem;
+    /* min-width: 50vw; */
+    /* width: 50vw; */
+    /* height: auto; */
+    line-height: 3rem;
+    /* padding: 0; */
+    /* margin: auto; */
+    /* display: block; */
+
+}
+
+.form-control:active,
+.form-control:focus,
+.form-control:focus:active {
+    background-color: var(--blue);
+    border-color: var(--blue);
+    color: white;
+}
+
+
+.button {
+    font-size: 16px;
+    font-weight: 800;
+    background-color: var(--pink);
+    border-radius: 20px;
+    padding: 10px 30px;
+    border: 2px solid var(--purple);
+    transition: ease-in-out;
+    transition-duration: 0.2s;
+    color: #eee;
+}
+
+
+.buttontip{
+  font-size: 16px;
+  font-weight: 800;
+  background-color: var(--pink);
+  border-radius: 20px;
+  padding: 10px 30px;
+  border: 2px solid var(--purple);
+  transition: ease-in-out;
+  transition-duration: 0.2s;
+  color: #eee;
+  margin: auto;
+  display: block;
+}
+
+.button:hover,
+.button:focus {
+  transform: scale(1.05);
+}
+
+.text-area {
+    position: relative;
+    margin: auto;
+    display: block;
+    color: #000;
+    font-size: 16px;
+    background-color: #fff;
+    line-height: 24px;
+    width: 636px;
+    height: fit-content;
+    min-height: 116px;
+    cursor: text;
+}
+
+  .copy-btn {
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0);
+    color: #fff;
+    border: 0;
+    float: right; 
+    margin-top: 10px;
+  }
+
+.inline-block-child {
+  display: inline-block;
+}
+
+@media screen and (max-width: 600px) {
+    header {
+        margin-top: 5vh;
+    }
+}
