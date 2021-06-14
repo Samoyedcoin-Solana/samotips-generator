@@ -261,16 +261,17 @@ Your wide format iframe code will appear here...
 
       function copyText(el, id) {
         let textarea = document.getElementById(id);
-        textarea.select();
-        document.execCommand('copy');
+        navigator.clipboard.writeText(textarea.value);
 
         let oldValue = el.innerHTML;
         let oldColor = el.style.color;
         el.innerHTML = `\n<span>Copied <i class="fa fa-check-circle"></i><span>\n`
         el.style.color = '#df7fe0';
+        el.disabled = true;
         setTimeout((element) => {
           element.innerHTML = oldValue;
           el.style.color = oldColor;
+          el.disabled = false;
         }, 800, el);
 
       }
