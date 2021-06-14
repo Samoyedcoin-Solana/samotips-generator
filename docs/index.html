@@ -79,7 +79,7 @@
         <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12">
           <h4 style="color: white">
             Button Code:
-            <button class="copy-btn" onclick="copyText('buttoncode')">
+            <button class="copy-btn" onclick="copyText(this, 'buttoncode')">
               <i class="fa fa-copy"></i>
             </button>
           </h4>
@@ -100,7 +100,7 @@ Your button code will appear here...
         <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12" >
           <h4 style="color: white">
             Iframe Code:
-            <button class="copy-btn" onclick="copyText('iframecode')">
+            <button class="copy-btn" onclick="copyText(this, 'iframecode')">
               <i class="fa fa-copy"></i>
             </button>
           </h4>
@@ -122,7 +122,7 @@ Your iframe code will appear here...
         <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12">
           <h4 style="color: white">
             Iframe Wide Format Code:
-            <button class="copy-btn" onclick="copyText('iframecode_wide')">
+            <button class="copy-btn" onclick="copyText(this, 'iframecode_wide')">
               <i class="fa fa-copy"></i>
             </button>
           </h4>
@@ -259,10 +259,20 @@ Your wide format iframe code will appear here...
         window.open(url, 'nom_popup', 'width=620, height=250');
       }
 
-      function copyText(id) {
+      function copyText(el, id) {
         let textarea = document.getElementById(id);
         textarea.select();
         document.execCommand('copy');
+
+        let oldValue = el.innerHTML;
+        let oldColor = el.style.color;
+        el.innerHTML = `\n<span>Copied <i class="fa fa-check-circle"></i><span>\n`
+        el.style.color = '#df7fe0';
+        setTimeout((element) => {
+          element.innerHTML = oldValue;
+          el.style.color = oldColor;
+        }, 800, el);
+
       }
     </script>
   </body>
